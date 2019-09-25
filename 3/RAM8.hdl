@@ -1,0 +1,21 @@
+CHIP RAM8 {
+    IN ip1[16], load, address[3];
+    OUT out[16];
+
+    PARTS:
+
+    DMux8Way(ip1=load, s=address, out1=loada, out2=loadb, out3=loadc, out4=loadd,
+                                   out5=loade, out6=loadf, out7=loadg, out8=loadh);
+
+    Reg16Bit(ip1=ip1, load=loada, out=outa);
+    Reg16Bit(ip1=ip1, load=loadb, out=outb);
+    Reg16Bit(ip1=ip1, load=loadc, out=outc);
+    Reg16Bit(ip1=ip1, load=loadd, out=outd);
+    Reg16Bit(ip1=ip1, load=loade, out=oute);
+    Reg16Bit(ip1=ip1, load=loadf, out=outf);
+    Reg16Bit(ip1=ip1, load=loadg, out=outg);
+    Reg16Bit(ip1=ip1, load=loadh, out=outh);
+
+    Mux8Way16(ip1=outa, ip2=outb, ip3=outc, ip4=outd,
+              ip5=oute, ip6=outf, ip7=outg, ip8=outh, s=address, out=out);
+}

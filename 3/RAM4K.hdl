@@ -1,0 +1,18 @@
+CHIP RAM4K {
+    IN ip1[16], load, address[12];
+    OUT out[16];
+
+    PARTS:
+	DMux8Way(ip1=load, s=address[9..11], out1=loada, out2=loadb, out3=loadc, out4=loadd,
+                                   out5=loade, out6=loadf, out7=loadg, out8=loadh);
+    RAM512(ip1=ip1, load=loada, address=address[0..8], out=outa);
+    RAM512(ip1=ip1, load=loadb, address=address[0..8], out=outb);
+    RAM512(ip1=ip1, load=loadc, address=address[0..8], out=outc);
+    RAM512(ip1=ip1, load=loadd, address=address[0..8], out=outd);
+    RAM512(ip1=ip1, load=loade, address=address[0..8], out=oute);
+    RAM512(ip1=ip1, load=loadf, address=address[0..8], out=outf);
+    RAM512(ip1=ip1, load=loadg, address=address[0..8], out=outg);
+    RAM512(ip1=ip1, load=loadh, address=address[0..8], out=outh);
+	Mux8Way16(ip1=outa, ip2=outb, ip3=outc, ip4=outd,
+              ip5=oute, ip6=outf, ip7=outg, ip8=outh, s=address[9..11], out=out);
+}

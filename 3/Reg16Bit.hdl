@@ -1,0 +1,8 @@
+CHIP Reg16Bit {
+    IN ip1[16], load;
+    OUT out[16];
+
+    PARTS:
+    Reg8Bit(ip1[0..7]=ip1[0..7], load=load, out[0..7]=out[0..7]);
+    Reg8Bit(ip1[0..7]=ip1[8..15], load=load, out[0..7]=out[8..15]);
+}

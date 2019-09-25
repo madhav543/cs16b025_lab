@@ -1,0 +1,11 @@
+CHIP RAM64K {
+    IN ip1[16], load, address[16];
+    OUT out[16];
+
+    PARTS:
+    // Put your code here:
+    DMux(ip1=load, s=address[15], out1=loada, out2=loadb);
+	RAM32K(ip1=ip1, load=loada, address=address[0..14], out=outa);
+	RAM32K(ip1=ip1, load=loadb, address=address[0..14], out=outb);
+	Mux16(ip1=outa, ip2=outb, s=address[15], out=out);
+}

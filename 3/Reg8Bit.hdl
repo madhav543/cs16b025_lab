@@ -1,0 +1,14 @@
+CHIP Reg8Bit {
+    IN ip1[8], load;
+    OUT out[8];
+
+    PARTS:
+    Bit(ip1=ip1[0],  load=load, out=out[0]);
+    Bit(ip1=ip1[1],  load=load, out=out[1]);
+    Bit(ip1=ip1[2],  load=load, out=out[2]);
+    Bit(ip1=ip1[3],  load=load, out=out[3]);
+    Bit(ip1=ip1[4],  load=load, out=out[4]);
+    Bit(ip1=ip1[5],  load=load, out=out[5]);
+    Bit(ip1=ip1[6],  load=load, out=out[6]);
+    Bit(ip1=ip1[7],  load=load, out=out[7]);
+}

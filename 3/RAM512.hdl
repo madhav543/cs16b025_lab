@@ -1,0 +1,19 @@
+CHIP RAM512 {
+    IN ip1[16], load, address[9];
+    OUT out[16];
+
+    PARTS:
+    // Put your code here:
+    DMux8Way(ip1=load, s=address[6..8], out1=loada, out2=loadb, out3=loadc, out4=loadd,
+                                   out5=loade, out6=loadf, out7=loadg, out8=loadh);
+    RAM64(ip1=ip1, load=loada, address=address[0..5], out=outa);
+    RAM64(ip1=ip1, load=loadb, address=address[0..5], out=outb);
+    RAM64(ip1=ip1, load=loadc, address=address[0..5], out=outc);
+    RAM64(ip1=ip1, load=loadd, address=address[0..5], out=outd);
+    RAM64(ip1=ip1, load=loade, address=address[0..5], out=oute);
+    RAM64(ip1=ip1, load=loadf, address=address[0..5], out=outf);
+    RAM64(ip1=ip1, load=loadg, address=address[0..5], out=outg);
+    RAM64(ip1=ip1, load=loadh, address=address[0..5], out=outh);
+	Mux8Way16(ip1=outa, ip2=outb, ip3=outc, ip4=outd,
+              ip5=oute, ip6=outf, ip7=outg, ip8=outh, s=address[6..8], out=out);	
+}
