@@ -1,0 +1,8 @@
+CHIP Reg32Bit {
+    IN ip1[16],ip2[16], load;
+    OUT out1[16],out2[16];
+
+    PARTS:
+    Reg16Bit(ip1[0..15]=ip1[0..15], load=load, out[0..15]=out1[0..15]);
+    Reg16Bit(ip1[0..15]=ip2[0..15], load=load, out[0..15]=out2[0..15]);
+}
