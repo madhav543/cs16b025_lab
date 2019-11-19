@@ -1,0 +1,4 @@
+run command:
+  pyhton3 assembler.py [filename.asm]
+output:
+  filename.hack
